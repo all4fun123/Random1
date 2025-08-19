@@ -180,7 +180,7 @@ async def run_event_flow(username, key, state):
                         return False
                     state.token = token
                     state.account_nick = username
-                    state.is_first_run = False
+                    state.is_first_run = True
 
                 bearer_token = f"Bearer {state.token}"
 
@@ -219,7 +219,7 @@ async def run_event_flow(username, key, state):
                     logger.warning(f"Tài khoản {username}: Không thể tiếp tục do lỗi get-cookies")
                     state.is_first_run = True
                     retry_count += 1
-                    await asyncio.sleep(5)
+                    await asyncio.sleep(2)
                     continue
 
                 async def send_wish(account_nick):
