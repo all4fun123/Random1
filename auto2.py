@@ -169,7 +169,7 @@ async def run_event_flow(username, key, state):
         "http://": "http://160.191.49.251:20052",
         "https://": "http://160.191.49.251:20052"  # Use the same or different proxy for HTTPS
     }
-    async with httpx.AsyncClient(timeout=3.0, http2=False, limits=limits, proxies=proxies) as client:
+    async with httpx.AsyncClient(timeout=3.0, http2=False, limits=limits) as client:
         retry_count = 0
         max_retries = 10
         while retry_count < max_retries:
@@ -400,3 +400,4 @@ async def main():
 if __name__ == "__main__":
 
     asyncio.run(main())
+
